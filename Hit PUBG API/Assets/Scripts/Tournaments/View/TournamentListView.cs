@@ -13,6 +13,7 @@ namespace Tournaments.View
 {
     public class TournamentListView : BaseView, ITournamentListView
     {
+        [SerializeField] private RectTransform topGradient;
         [SerializeField] private RectTransform content;
         [SerializeField] private TournamentEntryView entryPrefab;
 
@@ -30,7 +31,7 @@ namespace Tournaments.View
             var sizeDelta = content.sizeDelta;
 
             var topX = 0f;
-            var topY = 0f;
+            var topY = -topGradient.rect.height;
 
             foreach (var tournament in tournaments)
             {
@@ -39,11 +40,11 @@ namespace Tournaments.View
                 var entryHeight = entryView.GetHeight();
 
                 entryView.SetWidth(sizeDelta.x);
-                
+
                 entryView.SetPosition(new Vector2(topX, topY));
-                
+
                 totalHeight += entryHeight;
-                
+
                 topY -= entryHeight;
 
 
