@@ -13,46 +13,41 @@ namespace Tournaments.View
 {
     public class TournamentListView : BaseView, ITournamentListView
     {
-        [SerializeField] private RectTransform topGradient;
         [SerializeField] private RectTransform content;
         [SerializeField] private TournamentEntryView entryPrefab;
 
-        private TournamentListPresenter presenter;
-
         private void Awake()
         {
-            presenter = new TournamentListPresenter(this, new TournamentHttpGateway(new ObservableWebClient()));
+            // ReSharper disable once ObjectCreationAsStatement
+            new TournamentListPresenter(this, new TournamentHttpGateway(new ObservableWebClient()));
         }
 
         public void ShowTournaments(IReadOnlyList<Tournament> tournaments)
         {
             content.CleanChildren();
-            var totalHeight = 0f;
-            var sizeDelta = content.sizeDelta;
 
-            var topX = 0f;
-            var topY = -topGradient.rect.height;
+            var contentSize = content.sizeDelta;
+            var entryPosition = Vector2.zero;
+            contentSize.y = 0f;
 
             foreach (var tournament in tournaments)
             {
                 var entryView = Instantiate(entryPrefab, content);
 
+                entryView.Init(tournament.TournamentId, tournament.CreationTime);
+
                 var entryHeight = entryView.GetHeight();
 
-                entryView.SetWidth(sizeDelta.x);
+                entryView.SetWidth(contentSize.x);
 
-                entryView.SetPosition(new Vector2(topX, topY));
+                entryView.SetPosition(entryPosition);
 
-                totalHeight += entryHeight;
+                contentSize.y += entryHeight;
 
-                topY -= entryHeight;
-
-
-                entryView.Init(tournament.TournamentId, tournament.CreationTime);
+                entryPosition.y -= entryHeight;
             }
 
-            sizeDelta.y = totalHeight;
-            content.sizeDelta = sizeDelta;
+            content.sizeDelta = contentSize;
         }
     }
 }
