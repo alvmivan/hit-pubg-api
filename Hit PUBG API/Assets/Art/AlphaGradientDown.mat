@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AlphaGradientDown
+  m_Shader: {fileID: -6465566751694194690, guid: 9a3e510b1095f254c9e411ffccb55ace, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_59442959f529441ea670c39478449cb6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - Color_0867478d1c044bf9a91b09cb1a8bd915: {r: 1, g: 1, b: 1, a: 1}
+    - Color_1638c3ab36654495b59ca1a2fa8c643a: {r: 0, g: 0, b: 0, a: 0}
+    - Color_2623cd24acc54da6907855ac9cd4a9cd: {r: 1, g: 1, b: 1, a: 1}
+    - Color_44f2c17dd640462a81bd11c28bf82b8d: {r: 1, g: 1, b: 1, a: 0}
+    - Color_48470386b29941dfa63f2069d64a61e6: {r: 0, g: 0, b: 0, a: 0}
+    - Color_52182ffba8b7482096d4c14542757641: {r: 0.3773585, g: 0.29734886, b: 0.22961909, a: 1}
+    - Color_699c2ff109d34d8e899224f195f52410: {r: 1, g: 1, b: 1, a: 1}
+    - Color_91ab1e77b2f945758d40b24d033231f2: {r: 0, g: 0, b: 0, a: 0}
+    - Color_dfa790ac4487483eb460f8a557fa408d: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
