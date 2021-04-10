@@ -21,7 +21,8 @@ namespace Tournaments.View
 
         [SerializeField] private int entriesToLoadWithDelay = 6;
         [SerializeField] private float loadingEffectDuration;
-
+        [SerializeField] private RectTransform gradientTop;
+        [SerializeField] private RectTransform gradientBottom;
 
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
@@ -56,8 +57,12 @@ namespace Tournaments.View
         private IEnumerator LoadTournaments(IReadOnlyList<Tournament> tournaments)
         {
             var contentSize = content.sizeDelta;
-            var entryPosition = Vector2.zero;
-            contentSize.y = 0f;
+            var topGradientHeight = gradientTop.rect.height;
+            var bottomGradientHeight = gradientBottom.rect.height;
+            var entryPosition = new Vector2(0, -topGradientHeight);
+            contentSize.y = topGradientHeight + bottomGradientHeight;
+
+            Debug.Log(topGradientHeight);
 
             //active again the scroll
             scrollRect.gameObject.SetActive(true);
@@ -67,13 +72,17 @@ namespace Tournaments.View
             //setup a delay to wait on the first iterations
             var delay = new WaitForSecondsRealtime(loadingEffectDuration / entriesToLoadWithDelay);
 
-            for (var i = 0; i < tournaments.Count; i++)
+            var count = tournaments.Count;
+            for (var i = 0; i < count; i++)
             {
                 var tournament = tournaments[i];
 
                 // create the tournament entry
                 var entryView = Instantiate(entryPrefab, content);
                 entryView.Init(tournament.TournamentId, tournament.CreationTime);
+
+                //if last disable end line
+                entryView.ShowBottomLine(i + 1 < count);
 
                 // setup rect and update custom layout
                 var entryHeight = entryView.GetHeight();

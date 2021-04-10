@@ -9,6 +9,7 @@ namespace Tournaments.View
         [SerializeField] private TextMeshProUGUI tournamentIdLabel;
         [SerializeField] private TextMeshProUGUI creationTimeLabel;
         [SerializeField] private RectTransform container;
+        [SerializeField] private RectTransform bottomLine;
 
         public float GetHeight()
         {
@@ -31,6 +32,11 @@ namespace Tournaments.View
         public void SetPosition(Vector2 position)
         {
             container.localPosition = position;
+        }
+
+        public void ShowBottomLine(bool show)
+        {
+            bottomLine.gameObject.SetActive(show);
         }
     }
 }
