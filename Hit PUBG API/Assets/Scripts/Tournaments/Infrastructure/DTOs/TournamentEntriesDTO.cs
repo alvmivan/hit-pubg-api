@@ -1,25 +1,11 @@
 ﻿using System;
 
-namespace Tournaments.Infrastructure
+namespace Tournaments.Infrastructure.DTOs
 {
     [Serializable]
     public struct TournamentEntriesDTO
     {
         public TournamentEntryDTO[] data;
-    }
-
-    [Serializable]
-    public struct TournamentEntryDTO
-    {
-        public string type;
-        public string id;
-        public TournamentAttributesDTO attributes;
-    }
-
-    [Serializable]
-    public struct TournamentAttributesDTO
-    {
-        public string createdAt;
     }
 
     //example json:

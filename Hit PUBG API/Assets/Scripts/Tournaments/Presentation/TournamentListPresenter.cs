@@ -5,9 +5,9 @@ namespace Tournaments.Presentation
 {
     public class TournamentListPresenter
     {
-        private readonly ITournamentListView view;
         private readonly CompositeDisposable disposables = new CompositeDisposable();
-        private ITournamentGateway gateway;
+        private readonly ITournamentGateway gateway;
+        private readonly ITournamentListView view;
 
         public TournamentListPresenter(ITournamentListView view, ITournamentGateway gateway)
         {
@@ -18,12 +18,17 @@ namespace Tournaments.Presentation
 
         private void BindToViewEvents()
         {
+            // when view is enabled then present the info
             view.ViewEnabled
                 .Subscribe(_ => Present())
                 .AddTo(disposables);
+
+            // hide the view on disabled
             view.ViewDisabled
                 .Subscribe(_ => Hide())
                 .AddTo(disposables);
+
+            // perform cleanup on view disposed
             view.ViewCleanup
                 .Subscribe(_ => CleanUp())
                 .AddTo(disposables);
@@ -34,11 +39,13 @@ namespace Tournaments.Presentation
             gateway
                 .GetEntries()
                 .ObserveOnMainThread()
-                .Subscribe(view.ShowTournaments);
+                .Subscribe(view.ShowTournaments)
+                .AddTo(disposables);
         }
 
         private void Hide()
         {
+            view.OnHide();
         }
 
         private void CleanUp()

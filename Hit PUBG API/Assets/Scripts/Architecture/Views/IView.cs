@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace Architecture
+namespace Architecture.Views
 {
     public interface IView
     {

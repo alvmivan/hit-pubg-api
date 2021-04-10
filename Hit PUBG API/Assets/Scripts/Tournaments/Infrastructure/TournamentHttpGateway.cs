@@ -4,27 +4,24 @@ using System.Linq;
 using Architecture.WebClient;
 using Tournaments.Core.Domain;
 using Tournaments.Core.Services;
+using Tournaments.Infrastructure.DTOs;
 using UniRx;
 using UnityEngine;
-
 
 namespace Tournaments.Infrastructure
 {
     public class TournamentHttpGateway : ITournamentGateway
     {
-        private const string ApiKey =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5Y2NmZWRmMC03YTgzLTAxMzktMzQ5OS0wNzE2M2MzNTk3YmEiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNjE3ODc3OTM2LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6Ii1kMzZjMWU3Ni1kYWEyLTRkYTAtYWEyYi0yYmJmZjFmOTU3NTMifQ.wVbimEHIW_hCnwCnTY2f3aXABUx4ny2VxyxEZesrSy4";
-
         private const string Server = "https://api.pubg.com";
         private const string Endpoint = "/tournaments";
 
         private const string Uri = Server + Endpoint;
 
-        private static readonly (string key, string value)[] Headers = new[]
+        private static readonly (string key, string value)[] Headers =
         {
             ("accept", "application/vnd.api+json"),
-            ("Authorization", " Bearer " + ApiKey),
-            ("content-type", "application/json"),
+            ("Authorization", " Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5Y2NmZWRmMC03YTgzLTAxMzktMzQ5OS0wNzE2M2MzNTk3YmEiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNjE3ODc3OTM2LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6Ii1kMzZjMWU3Ni1kYWEyLTRkYTAtYWEyYi0yYmJmZjFmOTU3NTMifQ.wVbimEHIW_hCnwCnTY2f3aXABUx4ny2VxyxEZesrSy4"),
+            ("content-type", "application/json")
         };
 
         private readonly IWebClient webClient;

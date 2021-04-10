@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Tournaments.View
 {
