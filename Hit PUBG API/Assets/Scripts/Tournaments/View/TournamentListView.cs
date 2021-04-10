@@ -62,8 +62,6 @@ namespace Tournaments.View
             var entryPosition = new Vector2(0, -topGradientHeight);
             contentSize.y = topGradientHeight + bottomGradientHeight;
 
-            Debug.Log(topGradientHeight);
-
             //active again the scroll
             scrollRect.gameObject.SetActive(true);
             //but disable scrolling
